@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/ruairiwhite1/mod-pal/issues"
   },
-  "homepage": "https://github.com/ruairiwhite1/mod-pal#readme"
+  "homepage": "https://github.com/ruairiwhite1/mod-pal#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {}
 }
