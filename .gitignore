@@ -2,5 +2,5 @@ config.json
 node_modules
 package-lock.json
 .env
-mongo.js
-util
+.DS_Store
+util/mongo
