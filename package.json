@@ -20,5 +20,12 @@
   "dependencies": {
     "discord.js": "^12.5.1"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "_moduleAliases": {
+    "@root": ".",
+    "@schemas": "./schemas",
+    "@util": "./util",
+    "@features": "./features/features",
+    "@commands": "./commands/commands"
+  }
 }
