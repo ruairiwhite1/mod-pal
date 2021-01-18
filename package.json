@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ruairiwhite1/mod-pal#readme",
   "dependencies": {
+    "canvacord": "^5.0.8",
     "discord.js": "^12.5.1",
     "module-alias": "^2.2.2",
     "mongoose": "^5.11.12"

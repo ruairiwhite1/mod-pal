@@ -2,11 +2,13 @@ require('module-alias/register')
 
 const Discord = require('discord.js')
 const client = new Discord.Client()
+
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const loadCommands = require('./commands/load-commands')
 const command = require('@util/command')
 const loadFeatures = require('@root/features/load-features')
+const eightBall = require('./commands/commands/fun/eightBall')
 
 client.on('ready', async () => {
     console.log('Mod Pal online!')

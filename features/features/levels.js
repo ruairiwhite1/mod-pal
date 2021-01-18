@@ -11,6 +11,42 @@ module.exports = (client) => {
   })
 }
 
+module.exports.getRank = async (guildId, userId) => {
+  const cachedValue = levelCache[`${guildId}-${userId}`]
+  if (cachedValue) {
+      return cachedValue
+  }
+
+  return await mongo().then(async mongoose => {
+      try {
+
+          const result = await profileSchema.findOne({
+              guildId,
+              userId
+          })
+
+          let level = 0
+          if (result) {
+              level = result.level
+          } else {
+              console.log('Inserting a document')
+              await new profileSchema({
+                  guildId,
+                  userId,
+                  level
+              }) .save()
+
+              levelCache[`${guildId}-${userId}`] = level
+
+          }
+
+          return level
+      } finally {
+          mongoose.connection.close
+      }
+  })
+}
+
 const getNeededXP = (level) => level * level * 100
 
 const addXP = async (guildId, userId, xpToAdd, message) => {
@@ -65,39 +101,3 @@ const addXP = async (guildId, userId, xpToAdd, message) => {
 }
 
 module.exports.addXP = addXP
-
-module.exports.getRank = async (guildId, userId) => {
-    const cachedValue = levelCache[`${guildId}-${userId}`]
-    if (cachedValue) {
-        return cachedValue
-    }
-
-    return await mongo().then(async mongoose => {
-        try {
-
-            const result = await profileSchema.findOne({
-                guildId,
-                userId
-            })
-
-            let level = 0
-            if (result) {
-                level = result.levels
-            } else {
-                console.log('Inserting a document')
-                await new profileSchema({
-                    guildId,
-                    userId,
-                    xp
-                }) .save()
-
-                levelCache[`${guildId}-${userId}`] = xp
-
-            }
-
-            return level
-        } finally {
-            mongoose.connection.close
-        }
-    })
-}
