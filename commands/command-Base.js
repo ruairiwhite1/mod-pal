@@ -57,6 +57,10 @@ module.exports = (client, commandOptions) => {
     callback,
   } = commandOptions
 
+  if (!commands) {
+    return
+  }
+
   if (typeof commands === 'string') {
     commands = [commands]
   }
