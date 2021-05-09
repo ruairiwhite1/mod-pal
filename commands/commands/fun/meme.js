@@ -1,10 +1,9 @@
 const { MessageEmbed } = require('discord.js');
-const somethingRandom = require('some-random-cat').Random // Import the package...
+const somethingRandom = require('some-random-cat').Random 
 const subreddits = [
     "meme",
     "memes",
     "dankmemes",
-    // You can add as many as you wish...
 ]
 
 module.exports ={

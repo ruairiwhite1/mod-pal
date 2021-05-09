@@ -6,7 +6,7 @@ module.exports ={
     description: 'you ask yes or no Question and it gives you an Answer',
     callback: async (message, arguments, client) => {
       if(!arguments[2]) return message.reply("please type a full Question");
-      let replies = ["Yes.","No.","I don't know🤔","Ask again later I'm Busy","Well yes but Actually No.","Well No but Actually Yes.","how should i know ?","Yes...,Sorry I mean No."];
+      let replies = ["Yes.","No.","I don't know🤔","Ask again later I'm Busy","Well yes but Actually No.","Well No but Actually Yes.","how should i know ?","Yes...,Sorry I mean No.","Well I'm think yes right now"];
       
       let result = Math.floor((Math.random() * replies.length));
       let question = arguments.slice(1).join(" ");

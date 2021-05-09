@@ -20,10 +20,6 @@ const profileSchema = mongoose.Schema({
     type: Number,
     default: 1,
   },
-  nextXPAdd: {
-    type: Date,
-    default: null,
-},
 })
 
 module.exports = mongoose.model('profiles', profileSchema)
