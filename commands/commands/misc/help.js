@@ -1,4 +1,4 @@
-const { prefix } = require('@root/config.json')
+const prefix = ('!')
 
 module.exports = {
     commands: 'commands',
