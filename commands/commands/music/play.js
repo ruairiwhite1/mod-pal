@@ -4,7 +4,7 @@ module.exports = {
     commands: ['play', 'p'],
     maxArgs: 1,
     expectedArgs: "[]",
-    description: 'Displays a users balance',
+    description: 'Plays music through a voice channel',
     callback: async (message, args, client) => {
         const music = args.join(" ");
         
