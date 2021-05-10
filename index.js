@@ -13,7 +13,7 @@ const { DiscordUNO } = require("discord-uno");
 const discordUNO = new DiscordUNO();
 const DisTube = require('distube')
 
-bot.distube = new DisTube(bot, {searchSongs: false, emitNewSongOnly: true})
+const distube = new DisTube(bot, {searchSongs: false, emitNewSongOnly: true})
 
 client.on('ready', async () => {
     console.log('Mod Pal online!')
