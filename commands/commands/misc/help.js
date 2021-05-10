@@ -1,20 +1,20 @@
+const prefix = ('!')
+const Discord = require('discord.js')
+const logo = 'https://cdn.discordapp.com/attachments/658589666286632960/841329353061171210/3043526380_fd0b1df072_b.png'
+
 module.exports = {
-    commands: 'commands',
-    minArgs: 1,
-    maxArgs: 1,
+    commands: ['commands', 'help'],
     description: 'Displays this help command',
-    callback: async (message, arguments) => {
-        const prefix = ('!')
-        const logo = 'https://cdn.discordapp.com/attachments/658589666286632960/841329353061171210/3043526380_fd0b1df072_b.png',
-        const helpEmbed = new Discord.MessageEmbed()
+    callback: async (message, arguments, client) => {
+        const embed = new Discord.MessageEmbed()
                 .setTitle(`Imagination Bot Commands`)
                 .setDescription(`Below is all the commands you can use!`)
                 .setColor('LUMINOUS_VIVID_PINK')
                 .setThumbnail(logo)
-                .setField(
+                .addFields(
                     {
                         name: '**Music Commands**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -139,7 +139,7 @@ module.exports = {
                     },
                     {
                         name: '**Economy Commands**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -164,7 +164,7 @@ module.exports = {
                     },
                     {
                         name: '**Fun Commands**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -204,7 +204,7 @@ module.exports = {
                     },
                     {
                         name: '**Games**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -239,7 +239,7 @@ module.exports = {
                     },
                     {
                         name: '**Moderation Commands**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -269,7 +269,7 @@ module.exports = {
                     },
                     {
                         name: '**Miscellaneous Commands**',
-                        value: '',
+                        value: 'Use these commands with the bot!',
                         inline: false
                     },
                     {
@@ -288,6 +288,6 @@ module.exports = {
                         inline: true
                     },
                 )
-            message.channel.send(helpEmbed)
+            message.channel.send(embed)
     }
 }
