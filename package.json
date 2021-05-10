@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ruairiwhite1/mod-pal#readme",
   "dependencies": {
+    "@discordjs/opus": "^0.5.0",
     "canvacord": "^5.2.0",
     "canvas": "^2.7.0",
     "canvas-constructor": "^4.1.0",
@@ -25,6 +26,7 @@
     "date-fns": "^2.16.1",
     "discord-uno": "^2.0.21",
     "discord.js": "^12.5.1",
+    "ffmpeg-static": "^4.3.0",
     "figlet": "^1.5.0",
     "fs": "0.0.1-security",
     "fs-nextra": "^0.5.1",
