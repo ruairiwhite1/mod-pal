@@ -72,11 +72,37 @@ client.on('message', message => {
 			`**${id + 1}**. ${song.name} - \`${song.formattedDuration}\``).slice(0, 10).join('\n')}`)
 	}
 
+    if (command === 'pause') {
+		const queue = distube.pause(message)
+		message.channel.send('⏸ The music is now paused')
+	}
+
+    if (command === 'resume') {
+		const queue = distube.pause(message)
+		message.channel.send(':arrow_forward: The music has now resumed')
+	}
+
 	if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)) {
 		const filter = distube.setFilter(message, command)
 		message.channel.send(`Current queue filter: ${filter || 'Off'}`)
 	}
 })
+
+client.on('message', (message) => {
+    if (!message.content.startsWith(config.prefix)) return;
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift();
+    if (command == "volume")
+        distube.setVolume(message, args[0]);
+});
+
+client.on('message', (message) => {
+    if (!message.content.startsWith(config.prefix)) return;
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift();
+    if (command == "shuffle")
+        distube.shuffle(message);
+});
 
 // Queue status template
 const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || 'Off'}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? 'All Queue' : 'This Song' : 'Off'}\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
@@ -95,6 +121,8 @@ distube
 	.on('addList', (message, queue, playlist) => message.channel.send(
 		`Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`,
 	))
+
+    distube.on("empty", message => message.channel.send("Channel is empty. Leaving the channel"))
 // DisTubeOptions.searchSongs = true
 	.on('searchResult', (message, result) => {
 		let i = 0
