@@ -5,9 +5,9 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "[]",
     description: 'Displays a users balance',
-    callback: async (message, args, bot) => {
+    callback: async (message, args, client) => {
         const music = args.join(" ");
         
-        bot.distube.play(message, music)
+        client.distube.play(message, music)
     }
 }
