@@ -78,7 +78,7 @@ client.on('message', message => {
 	}
 
     if (command === 'resume') {
-		const queue = distube.pause(message)
+		const queue = distube.resume(message)
 		message.channel.send(':arrow_forward: The music has now resumed')
 	}
 
@@ -102,6 +102,16 @@ client.on('message', (message) => {
     const command = args.shift();
     if (command == "shuffle")
         distube.shuffle(message);
+});
+
+client.on('message', (message) => {
+    if (!message.content.startsWith(config.prefix)) return;
+    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+    const command = args.shift();
+    if (command == "autoplay") {
+        let mode = distube.toggleAutoplay(message);
+        message.channel.send("Set autoplay mode to `" + (mode ? "On" : "Off") + "`");
+    }
 });
 
 // Queue status template
