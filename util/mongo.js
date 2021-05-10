@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { mongoPath } = require('./config.json')
+//const { mongoPath } = require('./config.json')
 
 const mongoPath =
   'mongodb+srv://ModPalOwner:Celtic62@mod-pal-bot.locol.mongodb.net/ModPal?retryWrites=true&w=majority'
