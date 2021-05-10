@@ -5,7 +5,7 @@ const client = new Discord.Client()
 
 //const config = require('@root/config.json')
 const mongo = require('@util/mongo')
-const loadCommands = require('@root/commands/load-commands')
+const loadCommands = require('@command/load-commands')
 const command = require('@util/command')
 const loadFeatures = require('@root/features/load-features')
 const { DiscordUNO } = require("discord-uno");
