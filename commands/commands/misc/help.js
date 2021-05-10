@@ -1,7 +1,7 @@
 const { prefix } = require('@root/config.json')
 
 module.exports = {
-    commands: 'help',
+    commands: 'commands',
     minArgs: 1,
     maxArgs: 1,
     description: 'Displays this help command',
