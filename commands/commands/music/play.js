@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: "[]",
     description: 'Plays music through a voice channel',
     callback: async (message, args, client) => {
-        const music = args.join(" ");
+        const music = args.join(' ');
         
         client.distube.play(message, music)
     }
