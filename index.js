@@ -5,7 +5,7 @@ const client = new Discord.Client()
 
 //const config = require('@root/config.json')
 const mongo = require('@util/mongo')
-const loadCommands = require('@util/load-commands')
+const loadCommands = require('./commands/load-commands')
 const command = require('@util/command')
 const loadFeatures = require('@root/features/load-features')
 const { DiscordUNO } = require("discord-uno");
@@ -44,4 +44,5 @@ client.on('message', message => {
     }
 });
 
+//client.login(config.token)
 client.login(process.env.DJS_TOKEN)
