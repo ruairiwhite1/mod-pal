@@ -50,6 +50,7 @@
     "@util": "./util",
     "@features": "./features/features",
     "@commands": "./commands/commands",
-    "@images": "./images"
+    "@images": "./images",
+    "@command": "./commands"
   }
 }
