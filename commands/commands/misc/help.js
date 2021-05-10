@@ -6,7 +6,7 @@ module.exports = {
     callback: async (message, arguments) => {
         const prefix = ('!')
         const logo = 'https://cdn.discordapp.com/attachments/658589666286632960/841329353061171210/3043526380_fd0b1df072_b.png',
-        const embed = new MessageEmbed()
+        const helpEmbed = new Discord.MessageEmbed()
                 .setTitle(`Imagination Bot Commands`)
                 .setDescription(`Below is all the commands you can use!`)
                 .setColor('LUMINOUS_VIVID_PINK')
@@ -288,6 +288,6 @@ module.exports = {
                         inline: true
                     },
                 )
-            message.channel.send(embed)
+            message.channel.send(helpEmbed)
     }
 }
