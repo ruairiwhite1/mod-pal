@@ -18,8 +18,8 @@ module.exports = {
           });
     
           
-          let fail = message.client.emoji.fail
-          let success = message.client.emoji.success
+          const fail = ('☹️')
+          const success = ('🎉')
       const missingPermEmbed = new MessageEmbed()
       .setAuthor(`Missing User Permissions`, message.author.displayAvatarURL())
       .setDescription(`${fail} The following command the **Administrator** Permission`)
@@ -106,10 +106,10 @@ module.exports = {
       .setColor(client.color.red));
     }
                   
-                  message.channel.send("__**Finally Pick:**__\n\n`1` - React adds the role, unreacting removes the role\n`2`- Reacting will give the role but unreaction won't remove the role\n`3` - Reacting will remove the user's role and unreacting won't give it back\n`4` - When reacting it will remove the role, unreacting will add the role\n`5` - Same concept as number 3 but removes the user's reaction\n`6` - React to recieve the role and react again to remove the role").then(() => {
-                  message.channel.awaitMessages(filter, { max: 1, time: 60000, errors: ["time"] }).then(collected4 => {
+                  message.channel.send("__**Finally Pick:**__\n\n`A` - React adds the role, unreacting removes the role\n`B`- Reacting will give the role but unreaction won't remove the role\n`C` - Reacting will remove the user's role and unreacting won't give it back\n`D` - When reacting it will remove the role, unreacting will add the role\n`E` - Same concept as number 3 but removes the user's reaction\n`F` - React to recieve the role and react again to remove the role").then(() => {
+                  message.channel.awaitMessages(filter, { max: 1, time: 150000, errors: ["time"] }).then(collected4 => {
                     let option = collected4.first().content
-                    let numbers = ["1", "2", "3", "4", "5", "6"]
+                    let numbers = ["A", "B", "C", "D", "E", "F"]
                     if(!numbers.includes(option)) return message.channel.send("You must specify between 1, 2, 3, 4 or 5")
                     
                     message.channel.send(new MessageEmbed()

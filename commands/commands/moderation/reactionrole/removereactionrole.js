@@ -22,8 +22,8 @@ module.exports = {
     
           
         
-        let fail = message.client.emoji.fail
-          let success = message.client.emoji.success
+          const fail = ('☹️')
+          const success = ('🎉')
       const missingPermEmbed = new MessageEmbed()
       .setAuthor(`Missing User Permissions`, message.author.displayAvatarURL())
       .setDescription(`${fail} The following command the **Administrator** Permission`)
