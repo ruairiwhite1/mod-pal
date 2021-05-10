@@ -82,7 +82,7 @@ client.on('message', message => {
 		message.channel.send(':arrow_forward: The music has now resumed')
 	}
 
-	if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(command)) {
+	if ([`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`, `flanger`, `gate`, `haas`, `reverse`, `surround`, `mccompand`, `phaser`, `tremolo`, `earwax`].includes(command)) {
 		const filter = distube.setFilter(message, command)
 		message.channel.send(`Current queue filter: ${filter || 'Off'}`)
 	}
