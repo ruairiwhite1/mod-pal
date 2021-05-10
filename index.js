@@ -3,7 +3,7 @@ require('module-alias/register')
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
-const token = require('@root/token.json')
+//const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const loadCommands = require('./commands/load-commands')
@@ -45,5 +45,5 @@ client.on('message', message => {
     }
 });
 
-client.login(token.token)
-//client.login(process.env.DJS_TOKEN)
+//client.login(token.token)
+client.login(process.env.DJS_TOKEN)
