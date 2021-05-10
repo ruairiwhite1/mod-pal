@@ -7,6 +7,6 @@ module.exports = {
     callback: async (message, args, client) => {
         const music = args.join(' ');
         
-        client.distube.play(message, music)
+        distube.play(message, music)
     }
 }
