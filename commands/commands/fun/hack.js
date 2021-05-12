@@ -18,7 +18,7 @@ module.exports = {
                 return message.channel.send(hack1);
               } else {
                 if (user.bot) {
-                return message.channel.send(hackbot);
+                return message.channel.send('I can not hack one of my fellow kind');
               }
               }
               const member = message.guild.member(user);

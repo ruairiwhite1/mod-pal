@@ -18,8 +18,8 @@ module.exports = {
               let text = message.mentions.members.first()
               let embedd = new discord.MessageEmbed()
               .setColor('LUMINOUS_VIVID_PINK')
-              .setTitle(`${simpmachine}`)
-              .setDescription(`${simpyouare} **${amount}%** simp`)
+              .setTitle(`simpmachine`)
+              .setDescription(`You are **${amount}%** simp`)
             
               if (target === authorId){
               
@@ -28,7 +28,7 @@ module.exports = {
               let targett = target.username
                let embed = new discord.MessageEmbed()
               .setColor('LUMINOUS_VIVID_PINK')
-              .setTitle(`${simpmachine}`)
+              .setTitle(`simpmachine`)
               .setDescription(`${targett} ${simpIs} **${amount}%** simp`)
                message.channel.send(embed)
              

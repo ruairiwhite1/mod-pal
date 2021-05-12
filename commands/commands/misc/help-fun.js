@@ -78,11 +78,6 @@ module.exports = {
                         inline: true
                     },
                     {
-                        name: `${prefix}kill`,
-                        value: 'Kill someone!',
-                        inline: true
-                    },
-                    {
                         name: `${prefix}joke`,
                         value: 'Generate a random joke',
                         inline: true
