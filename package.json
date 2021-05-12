@@ -28,6 +28,7 @@
     "discord-xp": "^1.1.14",
     "discord.js": "^12.5.3",
     "distube": "^2.8.13",
+    "express": "^4.17.1",
     "ffmpeg-static": "^4.3.0",
     "figlet": "^1.5.0",
     "fs": "0.0.1-security",
@@ -62,6 +63,7 @@
     "@features": "./features/features",
     "@commands": "./commands/commands",
     "@images": "./images",
-    "@command": "./commands"
+    "@command": "./commands",
+    "@dashboard": "./dashboard"
   }
 }

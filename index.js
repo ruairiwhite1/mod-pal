@@ -38,6 +38,8 @@ client.on('ready', async () => {
     })
 })
 
+require('@dashboard/server');
+
 client.uno = new Map();
 
 client.on('message', message => {
