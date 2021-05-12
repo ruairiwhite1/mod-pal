@@ -53,6 +53,41 @@ module.exports = {
                         inline: true
                     },
                     {
+                        name: `${prefix}dicksize`,
+                        value: 'Shows your real dicksize',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}simprate`,
+                        value: 'See how simp you are',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}hack`,
+                        value: 'Hack someone (fake)',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}pickupline`,
+                        value: 'Generate a pickup line',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}nuke`,
+                        value: 'Nuke a Discord server (fake)',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}kill`,
+                        value: 'Kill someone!',
+                        inline: true
+                    },
+                    {
+                        name: `${prefix}joke`,
+                        value: 'Generate a random joke',
+                        inline: true
+                    },
+                    {
                         name: `${prefix}double-or-nothing`,
                         value: 'Bet some money, will it double or will you loose',
                         inline: true
