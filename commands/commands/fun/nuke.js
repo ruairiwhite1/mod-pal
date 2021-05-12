@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const Guild = require('@schemas/Guild');
 const { MessageEmbed } = require('discord.js');
 module.exports = {
         commands: 'nuke',

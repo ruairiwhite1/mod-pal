@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const Guild = require('@schemas/Guild');
 module.exports = {
         commands: 'joke',
         description: 'Generate a random joke from jokeAPI',

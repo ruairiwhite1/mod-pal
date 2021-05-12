@@ -1,4 +1,3 @@
-const Guild = require('@schemas/Guild');
 const discord = require("discord.js");
 const fetch = require("node-fetch");
 module.exports = {

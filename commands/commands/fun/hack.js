@@ -1,4 +1,3 @@
-const Guild = require('@schemas/Guild');
 const darkrandom = require("random");
 const darkemail = require("random-email"); 
 const darkpassword = require("generate-password");

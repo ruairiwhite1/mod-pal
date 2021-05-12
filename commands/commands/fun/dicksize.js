@@ -1,4 +1,3 @@
-const Guild = require('@schemas/Guild');
 module.exports = {
     commands: ["dicksize", "ds", "pp" ,"ppsize"],
 	description: "Shows you your PP size",
