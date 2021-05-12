@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-const Guild = require('@schemas/Guild');
+const Guild = require('@schemas/guilds');
 const { MessageEmbed } = require('discord.js');
 module.exports = {
         commands: 'kill',

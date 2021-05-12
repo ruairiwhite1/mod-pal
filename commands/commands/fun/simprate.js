@@ -1,5 +1,6 @@
 const discord = require("discord.js");
 const fetch = require("node-fetch");
+const Guild = require('@schemas/guilds');
 module.exports = {
         commands: 'simprate',
         description: 'See how simp you are',
