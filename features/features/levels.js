@@ -5,6 +5,8 @@ const Levels = require('discord-xp')
 
 Levels.setURL("mongodb+srv://ModPalOwner:Celtic62@mod-pal-bot.locol.mongodb.net/ModPal?retryWrites=true&w=majority")
 
+module.exports = (client) => {}
+
 client.on("message", async message => {
     if (!message.guild) return;
     if (message.author.bot) return;
