@@ -10,7 +10,7 @@ module.exports = {
                 guildId: message.guild.id
               });
             
-              const language = require(`../../data/language/${guildDB.language}.json`)
+              const language = require(`@util/language/english.json`)
             
             
             

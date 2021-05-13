@@ -12,7 +12,7 @@ module.exports = {
                   guildId: message.guild.id
                 });
               
-                const language = require(`@util/language/${guildDB.language}.json`)
+                const language = require(`@util/language/english.json`)
                 
               
               const impostorpassword = darkpassword.generate({
