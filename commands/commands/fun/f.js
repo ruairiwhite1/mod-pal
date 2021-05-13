@@ -7,7 +7,6 @@ module.exports = {
     callback: async (client, message, args) => {
 
         if (!args[0]) {
-            message.delete().catch(() => {});
             const embed = new Discord.MessageEmbed()
              .setAuthor(`${message.author.username} has paid their respects`)
              .setColor("RANDOM")
@@ -18,14 +17,12 @@ module.exports = {
         }
 
         else {
-            message.delete().cache(() => {
                 const embed = new Discord.MessageEmbed()
                 .setAuthor('\u2000', message.author.displayAvatarURL({ format: 'png' }))
                 .setColor('PURPLE')
                  message.channel.send(embed).then(m => m.react("🇫")).catch(() => {});
-            })
+            }
         }
 
 
     }
-};
