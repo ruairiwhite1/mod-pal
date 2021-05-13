@@ -8,7 +8,7 @@ module.exports = {
 
         if (!args[0]) {
             const embed = new Discord.MessageEmbed()
-             .setAuthor(`${message.author.username} has paid their respects`)
+             .setAuthor(`${message.author} has paid their respects`)
              .setColor("RANDOM")
             .setFooter('Press 🇫 to pay your respects') // You can change the emoji here to an custom one.
             message.channel.send(embed).then(m => m.react("🇫")).catch(() => { });
