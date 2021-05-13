@@ -27,6 +27,7 @@
     "discord-uno": "^2.0.21",
     "discord-xp": "^1.1.14",
     "discord.js": "^12.5.3",
+    "discordjs-ytdl": "^2.2.0",
     "distube": "^2.8.13",
     "express": "^4.17.1",
     "ffmpeg-static": "^4.3.0",
@@ -53,7 +54,7 @@
     "some-random-cat": "^2.2.1",
     "txtgen": "^2.2.8",
     "yaml": "^1.10.0",
-    "ytdl-core": "^4.7.0"
+    "ytdl-core": "^4.8.0"
   },
   "devDependencies": {},
   "_moduleAliases": {
