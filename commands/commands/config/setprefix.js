@@ -3,7 +3,7 @@ const commandPrefixSchema = require('@schemas/command-prefix-schema')
 
 // Importing command-base so we have access to the
 // "updateCache" function which I forgot to cover in the video
-const commandBase = require('../command-base')
+const commandBase = require('@root/commands/command-base')
 
 module.exports = {
   commands: 'setprefix',
