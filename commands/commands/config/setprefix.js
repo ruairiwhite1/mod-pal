@@ -1,7 +1,7 @@
 const mongo = require('@util/mongo')
 const commandPrefixSchema = require('@schemas/command-prefix-schema')
 
-odule.exports = {
+module.exports = {
     commands: "setprefix",
     minArgs: 1,
     maxArgs: 1,
