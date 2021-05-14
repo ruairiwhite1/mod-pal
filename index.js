@@ -41,15 +41,16 @@ client.on('ready', async () => {
 require('@dashboard/server');
 
 const { inspect } = require("util");
-const channelID = client.channels.cache.find(channel => channel.id === "799952318141300747")
+const channelID = "799952318141300747"
+const errorChannel = guild.channels.cache.get(channelID)
 process.on('unhandledRejection', (reason, promise) => {
-    channelID.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
+    errorChannel.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
 })
 process.on('uncaughtException', (err, origin) => {
-    channelID.send(`UncaughtException\nError:\n\`\`\`\n${inspect(err, { depth: 0 })}\n\`\`\`\nType: ${inspect(origin, { depth: 0 })}`)
+    errorChannel.send('channelID').send(`UncaughtException\nError:\n\`\`\`\n${inspect(err, { depth: 0 })}\n\`\`\`\nType: ${inspect(origin, { depth: 0 })}`)
 })
 process.on('warning', (warn) => {
-    channelID.send(`Warning\nWarn:\n\`\`\`\n${warn.name}\n${warn.message}\n\n${warn.stack}\n\`\`\``)
+    errorChannel.send('channelID').send(`Warning\nWarn:\n\`\`\`\n${warn.name}\n${warn.message}\n\n${warn.stack}\n\`\`\``)
 })
 
 client.uno = new Map();
