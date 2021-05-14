@@ -1,6 +1,8 @@
 const mongo = require('@util/mongo')
 const commandPrefixSchema = require('@schemas/command-prefix-schema')
 
+const commandBase = require('@root/commands/command-base')
+
 module.exports = {
     commands: "setprefix",
     minArgs: 1,
@@ -24,7 +26,9 @@ module.exports = {
                 })
 
                 message.reply(`Bot prefix has been updated to ${prefix}`)
-            } finally {
+                
+                commandBase.updateCache(guildId, prefix)
+                } finally {
                 mongoose.connection.close
             }
         })
