@@ -41,7 +41,7 @@ client.on('ready', async () => {
 require('@dashboard/server');
 
 const { inspect } = require("util");
-const channelID = bot.channels.cache.find(channel => channel.id === "799952318141300747")
+const channelID = client.channels.cache.find(channel => channel.id === "799952318141300747")
 process.on('unhandledRejection', (reason, promise) => {
     channelID.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
 })
