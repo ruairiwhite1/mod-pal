@@ -114,7 +114,7 @@ module.exports = {
                     
                     message.channel.send(new MessageEmbed()
                     .setAuthor('Reaction Roles - Setup Done', message.guild.iconURL(),messageID.url)
-                    .setColor(client.color.green)
+                    .setColor('LUMINOUS_VIVID_PINK')
                     .addField('Channel', channelToSend, true)
                     .addField('Emoji', emoji, true)
                     .addField('Type', option, true)
