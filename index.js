@@ -40,6 +40,18 @@ client.on('ready', async () => {
 
 require('@dashboard/server');
 
+const { inspect } = require("util");
+const channelID = bot.channels.cache.find(channel => channel.id === "799952318141300747")
+process.on('unhandledRejection', (reason, promise) => {
+    channelID.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
+})
+process.on('uncaughtException', (err, origin) => {
+    channelID(`UncaughtException\nError:\n\`\`\`\n${inspect(err, { depth: 0 })}\n\`\`\`\nType: ${inspect(origin, { depth: 0 })}`)
+})
+process.on('warning', (warn) => {
+    channelID.send(`Warning\nWarn:\n\`\`\`\n${warn.name}\n${warn.message}\n\n${warn.stack}\n\`\`\``)
+})
+
 client.uno = new Map();
 
 client.on('message', message => {
