@@ -1,7 +1,8 @@
+
 const mongoose = require("mongoose");
 const serverset = require("./models/schema.js");
 
-module.exports = class react {
+module.exports.client = client => class react {
 
   /**
   * @param {string} [dbUrl] - A valid mongo database URI.
@@ -50,12 +51,11 @@ module.exports = class react {
     client.react.set(msgid+emoji, { 
       guildid: guildId,
       msgid: msgid, 
-      reaction: emoji, 
+      reaction: emoji , 
       roleid: roleid,
       dm: dm,
       option: option
     });
-    
     return newRR;
   }
 
@@ -159,3 +159,4 @@ async reactionFetchAll(client) {
 
 
 }
+

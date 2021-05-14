@@ -2,7 +2,7 @@
 const Guild = require('@schemas/guilds');
 const { MessageEmbed } = require('discord.js');
 
-const ReactionRole = require("@root/packages/reactionrole/reaction.js")
+const ReactionRole = require("@root/packages/reactionrole/index.js")
 const react = new ReactionRole()
 const config = require("@root/config.json");
 react.setURL(config.mongoPath)
