@@ -1,6 +1,5 @@
 const mongo = require('@util/mongo')
 const commandPrefixSchema = require('@schemas/command-prefix-schema')
-
 const { prefix: globalPrefix } = require('@root/config.json')
 const guildPrefixes = {} 
 
@@ -129,6 +128,10 @@ module.exports = (client, commandOptions) => {
       }
     }
   })
+}
+
+module.exports.updateCache = (guildId, newPrefix) => {
+  guildPrefixes[guildId] = newPrefix
 }
 
 module.exports.loadPrefixes = async (client) => {
