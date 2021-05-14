@@ -18,27 +18,20 @@ const distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
 
 client.on('ready', async () => {
     console.log('Mod Pal online!')
-
-	await mongo().then(); commandBase.loadPrefixes(client)
+	
     loadCommands(client)
     loadFeatures(client)
-
-
-    await mongo().then(mongoose => {
-        try {
-            console.log('Connected to Mongo!')
-        } finally {
-          mongoose.connection.close()
+	await mongo().then(commandBase.loadPrefixes(client))
 
     client.user.setPresence({
         activity: {
             name: '!help',
             type: 'PLAYING'
         }
-    })
-        }
-    })
-})
+    });
+        },
+)
+
 
 require('@dashboard/server');
 

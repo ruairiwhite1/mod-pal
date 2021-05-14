@@ -10,7 +10,7 @@ module.exports = {
         const { guild, member } = message
 
         const jobIndex = Math.floor(Math.random() * jobs.length);
-        const coins = Math.floor(Math.random() * 2000) + 1;
+        const coins = Math.floor(Math.random() * 5000) + 1;
 
         const userId = message.author.id 
         const guildId = message.guild.id 
