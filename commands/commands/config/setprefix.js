@@ -1,15 +1,13 @@
 const mongo = require('@util/mongo')
 const commandPrefixSchema = require('@schemas/command-prefix-schema')
 
-// Importing command-base so we have access to the
-// "updateCache" function which I forgot to cover in the video
-const commandBase = require('@command/command-base.js')
+const commandBase = require('@root/commands/command-base')
 
 module.exports = {
   commands: 'setprefix',
   minArgs: 1,
   maxArgs: 1,
-  expectedArgs: "<This bot's new command prefix>",
+  expectedArgs: "<New prefix>",
   permissionError: 'You must be an admin to run this command.',
   permissions: 'ADMINISTRATOR',
   callback: async (message, arguments, text) => {
@@ -41,3 +39,4 @@ module.exports = {
     })
   },
 }
+

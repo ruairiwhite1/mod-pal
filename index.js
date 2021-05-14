@@ -6,7 +6,7 @@ const client = new Discord.Client()
 //const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
-const commandBase = require('./commands/command-base')
+const commandBase = require('@root/commands/command-base')
 const loadCommands = require('./commands/load-commands')
 const command = require('@util/command')
 const loadFeatures = require('@root/features/load-features')
@@ -19,7 +19,7 @@ const distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
 client.on('ready', async () => {
     console.log('Mod Pal online!')
 
-	commandBase.loadPrefixes.client
+	commandBase.loadPrefixes(client)
     loadCommands(client)
     loadFeatures(client)
 
