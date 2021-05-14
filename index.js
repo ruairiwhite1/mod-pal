@@ -19,7 +19,7 @@ const distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
 client.on('ready', async () => {
     console.log('Mod Pal online!')
 
-	commandBase.loadPrefixes(client)
+	await mongo().then(); commandBase.loadPrefixes(client)
     loadCommands(client)
     loadFeatures(client)
 
