@@ -25,7 +25,7 @@ module.exports = {
 ]
 )
         message.channel.send( {files: ["@root/images/" + guessAnimal + ".png"]})
-        message.channel.send(`**Guess the animal!(You have 15 seconds!)**:\n${sentence}`)
+        message.channel.send(`**Guess the animal!(You have 15 seconds!)**`)
             try {
                 msg = await message.channel.awaitMessages(filter, {
                     max: 1,
