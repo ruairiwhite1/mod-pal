@@ -40,22 +40,6 @@ client.on('ready', async () => {
 
 require('@dashboard/server');
 
-const { inspect } = require("util");
-const channelID = "799952318141300747"
-const { guild, content, member } = message
-const errorChannel = guild.channels.cache.get(channelID)
-process.on('unhandledRejection', (reason, promise) => {
-    errorChannel.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
-})
-process.on('uncaughtException', (err, origin) => {
-    errorChannel.send('channelID').send(`UncaughtException\nError:\n\`\`\`\n${inspect(err, { depth: 0 })}\n\`\`\`\nType: ${inspect(origin, { depth: 0 })}`)
-})
-process.on('warning', (warn) => {
-    errorChannel.send('channelID').send(`Warning\nWarn:\n\`\`\`\n${warn.name}\n${warn.message}\n\n${warn.stack}\n\`\`\``)
-})
-
-client.uno = new Map();
-
 client.on('message', message => {
     if (message.content === 'can I get a') {
         // send back "HUUU YEAH!" to the channel the message was sent in
