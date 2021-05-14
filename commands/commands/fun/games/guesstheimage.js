@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const ms = require('ms')
+const inGame = new Set()
 
 module.exports = {
     commands: ['guess', 'id'],
