@@ -42,6 +42,7 @@ require('@dashboard/server');
 
 const { inspect } = require("util");
 const channelID = "799952318141300747"
+const { guild, content, member } = message
 const errorChannel = guild.channels.cache.get(channelID)
 process.on('unhandledRejection', (reason, promise) => {
     errorChannel.send(`UnhandledRejection\nReason:\n\`\`\`\n${inspect(reason, { depth: 0 })}\n\`\`\` Promise:\n\`\`\`\n${inspect(promise, { depth: 0 })}\n\`\`\``)
