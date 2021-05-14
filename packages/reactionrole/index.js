@@ -1,8 +1,7 @@
-
 const mongoose = require("mongoose");
 const serverset = require("./models/schema.js");
 
-module.exports.client = client => class react {
+module.exports = class react {
 
   /**
   * @param {string} [dbUrl] - A valid mongo database URI.
