@@ -106,10 +106,10 @@ module.exports = {
       .setColor(client.color.red));
     }
                   
-                  message.channel.send("__**Finally Pick:**__\n\n`A` - React adds the role, unreacting removes the role\n`B`- Reacting will give the role but unreaction won't remove the role\n`C` - Reacting will remove the user's role and unreacting won't give it back\n`D` - When reacting it will remove the role, unreacting will add the role\n`E` - Same concept as number 3 but removes the user's reaction\n`F` - React to recieve the role and react again to remove the role").then(() => {
+                  message.channel.send("__**Finally Pick:**__\n\n`1` - React adds the role, unreacting removes the role\n`2`- Reacting will give the role but unreaction won't remove the role\n`3` - Reacting will remove the user's role and unreacting won't give it back\n`4` - When reacting it will remove the role, unreacting will add the role\n`5` - Same concept as number 3 but removes the user's reaction\n`6` - React to recieve the role and react again to remove the role").then(() => {
                   message.channel.awaitMessages(filter, { max: 1, time: 150000, errors: ["time"] }).then(collected4 => {
                     let option = collected4.first().content
-                    let numbers = ["A", "B", "C", "D", "E", "F"]
+                    let numbers = ["1", "2", "3", "4", "5", "6"]
                     if(!numbers.includes(option)) return message.channel.send("You must specify between 1, 2, 3, 4 or 5")
                     
                     message.channel.send(new MessageEmbed()
@@ -127,16 +127,20 @@ module.exports = {
                        await react.reactionCreate(client, message.guild.id , ID, role.id, emoji, "false", option);//ID is MessageID, ignore "false"
     
                     })
-                   }).catch(err => { message.channel.send(timeEnd) })
+                   }).catch(err => { message.channel.send(timeEnd) 
+                    console.log(err)})
                   })
-                   }).catch(err => { message.channel.send(timeEnd) })
+                   }).catch(err => { message.channel.send(timeEnd) 
+                    console.log(err)})
                   })
-               }).catch(err => { message.channel.send(timeEnd) })
+               }).catch(err => { message.channel.send(timeEnd) 
+                console.log(err)})
               })
          }).catch(err => { message.channel.send(timeEnd) 
          console.log(err)})
         })
-      }).catch(err => { message.channel.send(timeEnd) })
+      }).catch(err => { message.channel.send(timeEnd) 
+        console.log(err)})
     })
     
             function isCustomEmoji(emoji) {
