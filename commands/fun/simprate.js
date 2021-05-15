@@ -6,7 +6,7 @@ module.exports = {
         category: 'Fun',
         description: 'See how simp you are',
         expectedArgs: '[user]',
-        callback:     async ({ message, args, text, client, prefix, instance }) => {
+        callback:     async ({ message, args, client, prefix, instance }) => {
           const guildDB = await Guild.findOne({
             guildId: message.guild.id
           });
