@@ -3,7 +3,7 @@ require('module-alias/register')
 const Discord = require('discord.js')
 const client = new Discord.Client()
 
-//const token = require('@root/token.json')
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const commandBase = require('@root/commands/command-base')
@@ -140,5 +140,5 @@ distube
 		message.channel.send(`An error encountered: ${e}`)
 	})
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)
