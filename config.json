@@ -1,4 +1,3 @@
 {
-    "prefix": "!",
     "mongoPath": "mongodb+srv://ModPalOwner:Celtic62@mod-pal-bot.locol.mongodb.net/ModPal?retryWrites=true&w=majority"
 }
