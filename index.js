@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const WOKCommands = require('wokcommands')
 
-const token = require('@root/token.json')
+//const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
@@ -153,5 +153,5 @@ distube
 		message.channel.send(`An error encountered: ${e}`)
 	})
 
-client.login(token.token)
-//client.login(process.env.DJS_TOKEN)
+//client.login(token.token)
+client.login(process.env.DJS_TOKEN)
