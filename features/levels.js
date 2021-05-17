@@ -1,65 +1,43 @@
 const mongo = require('@util/mongo')
 const profileSchema = require('@schemas/profile-schema')
+const Levels = require('discord-xp')
+const config = require('@root/config.json')
 
 module.exports = (client) => {
-  client.on('message', (message) => {
-    const { guild, member } = message
 
-    addXP(guild.id, member.id, 23, message)
-  })
-}
+client.on("message", async message => {
 
-const getNeededXP = (level) => level * level * 100
+  Levels.setURL(config.mongoPath)
+  
+    if (!message.guild) return;
+    if (message.author.client) return;
 
-const addXP = async (guildId, userId, xpToAdd, message) => {
-  await mongo().then(async (mongoose) => {
-    try {
-      const result = await profileSchema.findOneAndUpdate(
-        {
-          guildId,
-          userId,
-        },
-        {
-          guildId,
-          userId,
-          $inc: {
-            xp: xpToAdd,
-          },
-        },
-        {
-          upsert: true,
-          new: true,
-        }
-      )
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
 
-      let { xp, level } = result
-      const needed = getNeededXP(level)
-
-      if (xp >= needed) {
-        ++level
-        xp -= needed
-
-        message.reply(
-          `You are now level ${level} with ${xp} experience! You now need ${getNeededXP(
-            level
-          )} XP to level up again.`
-        )
-
-        await profileSchema.updateOne(
-          {
-            guildId,
-            userId,
-          },
-          {
-            level,
-            xp,
-          }
-        )
-      }
-    } finally {
-      mongoose.connection.close()
+    const randomXp = Math.floor(Math.random() * 9) + 1; //Random amont of XP until the number you want + 1
+    const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomXp);
+    if (hasLeveledUp) {
+        const user = await Levels.fetch(message.author.id, message.guild.id);
+        message.channel.send(`You leveled up to ${user.level}! Keep it going!`);
     }
-  })
-}
+    
+    //Rank
+    if(command === "rank") {
+        const user = await Levels.fetch(message.author.id, message.guild.id);
+        message.channel.send(`You are currently level **${user.level}**!`)
+    }
+    
+    //Leaderboard
+    if(command === "leaderboard" || command === "lb") {
+        const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5);
+        if (rawLeaderboard.length < 1) return reply("Nobody's in leaderboard yet.");
 
-module.exports.addXP = addXP
+        const leaderboard = Levels.computeLeaderboard(client, rawLeaderboard); 
+
+        const lb = leaderboard.map(e => `${e.position}. ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString()}`);
+
+        message.channel.send(`${lb.join("\n\n")}}`)
+    }
+})
+}

@@ -1,3 +1,6 @@
+const Discord = require('discord.js')
+const DisTube = require('distube')
+
 module.exports = {
     commands: ['jump'],
     category: 'Music',
