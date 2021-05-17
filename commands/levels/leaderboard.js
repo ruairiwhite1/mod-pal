@@ -9,7 +9,7 @@ module.exports = {
     description: 'Displays a servers rank leaderboard',
     callback: async ({ message, args, text, client, prefix, instance }) => {
 const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5);
-        if (rawLeaderboard.length < 1) return reply("Nobody's in leaderboard yet.");
+        if (rawLeaderboard.length < 1) return message.reply("Nobody's in leaderboard yet.");
 
         const leaderboard = Levels.computeLeaderboard(client, rawLeaderboard); 
 
@@ -17,4 +17,4 @@ const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5);
 
         message.channel.send(`${lb.join("\n\n")}}`)
     }
-}
+} 
