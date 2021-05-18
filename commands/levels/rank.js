@@ -1,4 +1,4 @@
-const levels = require('@features/levels')
+const Levels = require('discord-xp')
 const request = require('node-superfetch');
 const fsn = require("fs-nextra");
 const Discord = require('discord.js');
