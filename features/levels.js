@@ -5,6 +5,8 @@ const config = require('@root/config.json')
 
 module.exports = (client) => {
 
+Levels.setURL(config.mongoPath)
+
 client.on("message", async message => {
 
   Levels.setURL(config.mongoPath)
