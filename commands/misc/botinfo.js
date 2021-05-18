@@ -6,21 +6,18 @@ module.exports = {
       category: 'Information',
       description: 'Displays bot information',
       callback: async ({ message, args, text, client, prefix, instance }) => {
-        let totalMembers = 0
     
-        for (const guild of this.client.guilds.cache) {
-          totalMembers += (await guild[1].members.fetch()).size
-        }
+        const totalMembers = message.guild.members.cache
     
         const embed = new MessageEmbed()
           .setAuthor(
-            `Information about the ${this.client.user.username} Bot`,
-            this.client.user.displayAvatarURL()
+            `Information about the ${client.user.username}`,
+            client.user.displayAvatarURL()
           )
           .addFields(
             {
               name: 'Bot tag',
-              value: this.client.user.tag,
+              value: client.user.tag,
             },
             {
               name: 'Version',
@@ -36,7 +33,7 @@ module.exports = {
             },
             {
               name: 'Server count',
-              value: this.client.guilds.cache.size,
+              value: client.guilds.cache.size,
             },
             {
               name: 'Total members',
