@@ -13,42 +13,19 @@ module.exports = {
     category: 'Information',
     description: 'Displays a users rank',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-        var target = message.mentions.users.first() || message.author;
+        const target = await Levels.fetch(message.author.id, message.guild.id);
         const guildId = message.guild.id
         const userId = target.id
-        const addXP = async (guildId, userId, xpToAdd, message) => {
-            await mongo().then(async (mongoose) => {
-              try {
-            const result = await profileSchema.findOneAndUpdate(
-                {
-                guildId,
-                userId,
-                },
-                {
-                guildId,
-                userId,
-                $inc: {
-                    xp: xpToAdd,
-                },
-                },
-                {
-                upsert: true,
-                new: true,
-                }
-            )
-            } finally {
-                mongoose.connection.close()
-    
         let { xp, currentLevel } = result
         var level = levels.level(guildId, userId) || 0;
         var currentxp = levels.xp(guildId, userId) || 0;
         var xpNeeded = levels.getNeededXP(guildId, userId)
         const rankcard = new Canvacord.Rank()
             .setAvatar(target.displayAvatarURL({format: 'png', dynamic: true}))
-            .setCurrentXP(levels.xp(guildId, userId) || 0)
-            .setRequiredXP(xpNeeded)
+            .setCurrentXP(user.xp) || 0
+            .setRequiredXP(neededXp)
             .setStatus(target.presence.status)
-            .setLevel(levels.level(guildId, userId) || 0)
+            .setLevel(user.level)
             .setRank(1, 'RANK', false)
             .setProgressBar("#a81d16", "COLOR")
             .setOverlay("#000000")
@@ -59,13 +36,6 @@ module.exports = {
             .then(data => {
                 const atta = new Discord.MessageAttachment(data, "rank.png")
                 message.channel.send(atta)
-                console.log(`xpNeeded: ${xpNeeded}`);
-                console.log(`result: ${result}`);
-                console.log(`Level: ${level}`)
             })
         }
     }
-    )
-}
-}
-}

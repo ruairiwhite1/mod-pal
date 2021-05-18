@@ -8,7 +8,7 @@ module.exports = {
     category: 'Information',
     description: 'Displays a servers rank leaderboard',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5);
+    const rawLeaderboard = await Levels.fetchLeaderboard(message.guild.id, 5);
         if (rawLeaderboard.length < 1) return message.reply("Nobody's in leaderboard yet.");
 
         const leaderboard = Levels.computeLeaderboard(client, rawLeaderboard); 
