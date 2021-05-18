@@ -1,11 +1,6 @@
-const Levels = require('discord-xp')
-const request = require('node-superfetch');
-const fsn = require("fs-nextra");
 const Discord = require('discord.js');
-const profileSchema = require('@schemas/profile-schema')
-const {
-    Canvas
-  } = require('canvas-constructor');
+const canvacord = require('canvacord')
+const Levels = require('discord-xp')
 
 module.exports = {
     commands: ['rank', 'level', 'lvl'],
@@ -13,19 +8,20 @@ module.exports = {
     category: 'Information',
     description: 'Displays a users rank',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-        const target = await Levels.fetch(message.author.id, message.guild.id);
-        const guildId = message.guild.id
-        const userId = target.id
-        const rankcard = new Canvacord.Rank()
-            .setAvatar(target.displayAvatarURL({format: 'png', dynamic: true}))
-            .setCurrentXP(user.xp) || 0
+        const target = message.mentions.users.first() || message.author;
+
+        const user = await Levels.fetch(target.id, message.guild.id)
+        const neededXp = Levels.xpFor(parseInt(user.level) + 1);
+        const rankcard = new canvacord.Rank()
+            .setAvatar(message.author.displayAvatarURL({format: 'png', dynamic: true}))
+            .setCurrentXP(user.xp)
             .setRequiredXP(neededXp)
-            .setStatus(target.presence.status)
+            .setStatus(message.member.presence.status)
             .setLevel(user.level)
             .setRank(1, 'RANK', false)
             .setProgressBar("#a81d16", "COLOR")
             .setOverlay("#000000")
-            .setUsername(target.username)
+            .setUsername(message.author.username)
             .setDiscriminator(target.discriminator)
             .setBackground("COLOR", "#808080")
             rankcard.build()
