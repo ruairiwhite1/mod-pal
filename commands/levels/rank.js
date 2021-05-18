@@ -16,10 +16,6 @@ module.exports = {
         const target = await Levels.fetch(message.author.id, message.guild.id);
         const guildId = message.guild.id
         const userId = target.id
-        let { xp, currentLevel } = result
-        var level = levels.level(guildId, userId) || 0;
-        var currentxp = levels.xp(guildId, userId) || 0;
-        var xpNeeded = levels.getNeededXP(guildId, userId)
         const rankcard = new Canvacord.Rank()
             .setAvatar(target.displayAvatarURL({format: 'png', dynamic: true}))
             .setCurrentXP(user.xp) || 0
