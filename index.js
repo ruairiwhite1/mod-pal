@@ -36,6 +36,7 @@ client.on('ready', async () => {
 	.setCategorySettings('Information', 'ℹ️')
 	.setCategorySettings('Moderation', '👮‍♂️')
 	.setCategorySettings('Development', '🖥')
+	.setCategorySettings('Image', '🖼️')
 
     client.user.setPresence({
         activity: {
