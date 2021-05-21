@@ -1,26 +1,24 @@
-const { MessageCollector } = require('discord.js')
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
-    commands: "_ban",
-    category: 'Moderation',
-    description: 'Used to ban members',
-    requiredPermissions: ['BAN_MEMBERS'],
-    callback: async ({ message, args, text, client, prefix, instance }) => {      
+    name: "kick",
+    description: 'Kicks a member from the discord',
+    callback: async ({ message, args, text, client, prefix, instance }) => {
+        
         const member = message.mentions.members.first()
         const reason = args.slice(1).join(" ")
 
-        if(!message.member.hasPermission('BAN_MEMBERS')) {
+        if(!message.member.hasPermission('KICK_MEMBERS')) {
             const no = new MessageEmbed()
             .setAuthor(`${client.user.username}`, `${client.user.displayAvatarURL({ dynamic: true})}`)
             .setDescription(`You dont have any permissions to execute this command!`)
             .setColor(`#A45EE5`)
             message.channel.send(no)
         } else {
-            if(!message.guild.me.hasPermission("BAN_MEMBERS")) {
+            if(!message.guild.me.hasPermission("KICK_MEMBERS")) {
                     const no2 = new MessageEmbed()
                     .setAuthor(`${client.user.username}`, `${client.user.displayAvatarURL({ dynamic: true})}`)
-                    .setDescription(`I dont have permissions to ban!`)
+                    .setDescription(`I dont have permissions to kick!`)
                     .setColor(`#A45EE5`)
                     message.channel.send(no2)
             } else {
@@ -28,7 +26,7 @@ module.exports = {
             if(!member) {
                 const members = new MessageEmbed()
                 .setAuthor(`${client.user.username}`, `${client.user.displayAvatarURL({ dynamic: true})}`)
-                .setDescription(`Please mention someone to ban!`)
+                .setDescription(`Please mention someone to kick!`)
                 .setColor(`#A45EE5`)
                 message.channel.send(members)
             } else {
@@ -39,21 +37,21 @@ module.exports = {
                     .setColor(`#A45EE5`)
                     message.channel.send(r)
                 } else {
-                    if(member.bannable) {
-                        member.ban({reason: reason})
+                    if(member.kickable) {
+                        member.kick(reason)
                         const done = new MessageEmbed()
                         .setTitle('Success!')
                         .setAuthor(`${client.user.username}`, `${client.user.displayAvatarURL({ dynamic: true})}`)
-                        .setDescription(`Banned ${member} for ${reason}.`)
+                        .setDescription(`Kicked ${member} for ${reason}.`)
                         .setFooter(`Requested by: ${message.author.username}`)
                         .setColor(`#A45EE5`)
                         message.channel.send(done)
                     } else {
-                        const ripbotperms = new MessageEmbed()
+                        const cant = new MessageEmbed()
                         .setAuthor(`${client.user.username}`, `${client.user.displayAvatarURL()}`)
                         .setDescription("This user is either a **Moderator**, **Administrator** or has **some** sort of role higher than mine!")
                         .setColor(`#A45EE5`)
-                        message.channel.send(ripbotperms)
+                        message.channel.send(cant)
                     }
                 }
             }

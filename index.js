@@ -4,7 +4,7 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const WOKCommands = require('wokcommands')
 
-//const token = require('@root/token.json')
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
@@ -50,5 +50,5 @@ client.on('ready', async () => {
 
 require('@dashboard/server');
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)
