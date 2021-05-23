@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 const discord = require('discord.js');
-const Guild = require('@schemas/Guild');
+const Guild = require('@schemas/guilds');
 module.exports = {
         name: 'trumptweet',
         aliases: [ 'trump' , 'tweet'],
@@ -8,14 +8,13 @@ module.exports = {
         category: 'Images',
         usage: '<text>',
         cooldown: '3s',
-        callback: async (message, args) {
+        callback: async ({ message, args, client, prefix, instance }) => {
 
-            const client = message.client
             const guildDB = await Guild.findOne({
               guildId: message.guild.id
             });
           
-            const language = require(`../../data/language/${guildDB.language}.json`)
+            const language = require(`@util/language/english.json`)
           
           if (!args[0]) return message.channel.send(new discord.MessageEmbed().setColor(client.color.red).setDescription(`${client.emoji.fail} ${language.changeErrorValid}`));
           
@@ -30,7 +29,7 @@ module.exports = {
                   .setImage(img)
                   .setFooter(message.member.displayName,  message.author.displayAvatarURL({ dynamic: true }))
                   .setTimestamp()
-                  .setColor(client.color.blue);
+                  .setColor('BLUE');
                 message.channel.send(embed);
               } catch (err) {
                 console.log(`error: ${err}, command name: Trump Tweet`)
