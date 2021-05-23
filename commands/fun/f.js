@@ -1,28 +1,44 @@
-const Discord = require("discord.js");
-const { MessageEmbed, DiscordAPIError } = require("discord.js");
-
+const discord = require("discord.js");
+const fetch = require('node-fetch');
+const Guild = require('@schemas/guilds');
+const { MessageEmbed } = require('discord.js');
 module.exports = {
-    commands: "f",
-    description: "f command - inc. MessageEmbed",
-    callback: async (client, message, args) => {
+        name: 'f',
+        description: 'Pay your respect!',
+        category: 'Fun',
+        callback: async ({ message, args, text, client, prefix, instance }) => {
 
-        if (!args[0]) {
-            const embed = new Discord.MessageEmbed()
-             .setAuthor(`${message.author} has paid their respects`)
-             .setColor("RANDOM")
-            .setFooter('Press 🇫 to pay your respects') // You can change the emoji here to an custom one.
-            message.channel.send(embed).then(m => m.react("🇫")).catch(() => { });
-
-
+            const guildDB = await Guild.findOne({
+                guildId: message.guild.id
+              });
+            
+              const language = require(`@util/language/english.json`)
+    
+              
+              const target = message.mentions.users.first()
+    
+    
+    
+    if (!args[0]) {
+        message.delete().catch(() => {});
+                  const embed = new discord.MessageEmbed()
+                      .setAuthor(`${message.author.username} has paid their respects.`, message.author.displayAvatarURL({ format: 'png' }))
+                      .setColor('PURPLE')
+                      .setFooter(`${language.f3}`);
+                  message.channel.send({ embed }).then(m => m.react('🇫')).catch(() => {});
+      
+      
+              }
+              else {
+              message.delete().catch(() => {});
+                  const embed = new discord.MessageEmbed()
+                      .setAuthor('\u2000', message.author.displayAvatarURL({ format: 'png' }))
+                      .setColor('PURPLE')
+                      .setDescription(`${message.author} ${language.f2} ${target}`)
+                      .setFooter(`${language.f3}`);
+                  message.channel.send({ embed }).then(m => m.react('🇫')).catch(() => {});
+      
+              }
+      
         }
-
-        else {
-                const embed = new Discord.MessageEmbed()
-                .setAuthor('\u2000', message.author.displayAvatarURL({ format: 'png' }))
-                .setColor('PURPLE')
-                 message.channel.send(embed).then(m => m.react("🇫")).catch(() => {});
-            }
-        }
-
-
-    }
+      }

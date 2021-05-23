@@ -25,6 +25,7 @@
     "common-tags": "^1.8.0",
     "date-fns": "^2.16.1",
     "discord-buttons": "^2.0.0",
+    "discord-giveaways": "^4.5.1",
     "discord-uno": "^2.0.21",
     "discord-xp": "^1.1.14",
     "discord.js": "^12.5.3",
@@ -55,6 +56,7 @@
     "random-email": "^1.0.3",
     "slot-machine": "^2.1.0",
     "some-random-cat": "^2.2.1",
+    "something-random-on-discord": "^3.4.4",
     "twemoji-parser": "^13.0.0",
     "txtgen": "^2.2.8",
     "util": "^0.12.3",
@@ -71,6 +73,7 @@
     "@features": "./features",
     "@commands": "./commands",
     "@images": "./images",
-    "@dashboard": "./dashboard"
+    "@dashboard": "./dashboard",
+    "@models": "./models"
   }
 }

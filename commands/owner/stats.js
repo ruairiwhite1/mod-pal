@@ -41,7 +41,7 @@ let embed = new MessageEmbed()
     { name: "⏱️ Uptime: ", value: uptime , inline: true },
     { name: "🏓 Ping:",value: `\`\`\`${Math.round(message.client.ws.ping)} ms\`\`\``, inline: true },
     { name: "🖥️ RAM: ", value: `\`\`\`${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB\`\`\``, inline: true  },
-    { name: "<:Ruairiw8:748995991310565436> Bot Owner:",value: `\`\`\`Ruairiw8\`\`\``},
+    { name: "<:Ruairiw8:829805156560404490> Bot Owner:",value: `\`\`\`Ruairiw8\`\`\``},
   )
   .setColor("3498DB")
   .setFooter("Thx For Choosing Imagination Bot")  

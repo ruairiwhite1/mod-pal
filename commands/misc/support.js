@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports = {
   name: "support",
-  category: "Information",
+  category: "Help",
   description: "Get an invite to our support discord!",
   run: async ({ message, args, text, client, prefix, instance }) => {
     

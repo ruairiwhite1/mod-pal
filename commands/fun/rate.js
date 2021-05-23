@@ -1,0 +1,36 @@
+const fetch = require('node-fetch');
+const Guild = require('@schemas/guilds');
+const { MessageEmbed } = require('discord.js');
+const discord = require("discord.js")
+module.exports = {
+        name: 'rate',
+        description: 'Give me something and ill rate',
+        category: 'Fun',
+        cooldown: '3s',
+        callback: async ({ message, args, text, client, prefix, instance }) => {
+
+            const guildDB = await Guild.findOne({
+                guildId: message.guild.id
+              });
+            
+              const language = require(`@util/language/english.json`)
+    
+    
+    
+              const rating = Math.floor(Math.random() * 10) + 0;
+              const item = message.content.split(/\s+/g).slice(1).join(' ');
+                 if (!item) return message.channel.send(new discord.MessageEmbed().setColor(message.guild.me.displayHexColor).setDescription(`${language.rate1} ${rating}/10!`));
+                 
+                 if (item.length > 40) return message.channel.send(`${language.rate2}`);
+             
+                     if (item.toUpperCase().startsWith('POGY')) return message.channel.send(`${language.rate3}`);
+                
+                     return message.channel.send(new discord.MessageEmbed().setColor('BLUE').setDescription(`${language.rate4} **${item}** ${language.rate5} ${rating}/10!`)).catch(() => {});
+             
+             
+               } 
+      }
+
+    
+         
+
