@@ -54,6 +54,7 @@
     "path": "^0.12.7",
     "random": "^3.0.6",
     "random-email": "^1.0.3",
+    "request-promise-native": "^1.0.9",
     "slot-machine": "^2.1.0",
     "some-random-cat": "^2.2.1",
     "something-random-on-discord": "^3.4.4",
