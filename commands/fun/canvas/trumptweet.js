@@ -5,7 +5,7 @@ module.exports = {
         name: 'trumptweet',
         aliases: [ 'trump' , 'tweet'],
         description: 'Make trump say a message!',
-        category: 'Images',
+        category: 'Image',
         usage: '<text>',
         cooldown: '3s',
         callback: async ({ message, args, client, prefix, instance }) => {

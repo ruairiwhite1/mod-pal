@@ -73,7 +73,7 @@
     "@util": "./util",
     "@features": "./features",
     "@commands": "./commands",
-    "@images": "./images",
+    "@assets": "./assets",
     "@dashboard": "./dashboard",
     "@models": "./models"
   }

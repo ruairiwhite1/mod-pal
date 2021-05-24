@@ -5,7 +5,7 @@ const  discord = require('discord.js');
 module.exports = {
         name: 'awooify',
         description: 'awooify someone!',
-        category: 'Images',
+        category: 'Image',
         expectedArgs: '<user>',
         cooldown: '5s',
         callback: async ({ message, args, text, client, prefix, instance }) => {
