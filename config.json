@@ -1,3 +1,5 @@
 {
-    "mongoPath": "mongodb+srv://ModPalOwner:Celtic62@mod-pal-bot.locol.mongodb.net/ModPal?retryWrites=true&w=majority"
+    "mongoPath": "mongodb+srv://ModPalOwner:Celtic62@mod-pal-bot.locol.mongodb.net/ModPal?retryWrites=true&w=majority",
+    "webhook_id":"846454291669319761", 
+    "webhook_url":"uBNVa4_-StTGpzbK00ReytTzjdg-Wj-C6wXhgpZvvC-CyGc4viP0CJwTYydavOyCdcIG"
 }
