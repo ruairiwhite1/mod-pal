@@ -39,6 +39,7 @@ client.on('ready', async () => {
 	.setCategorySettings('Image', '🖼️')
 	.setCategorySettings('Alt Detector', '🤖')
 	.setCategorySettings('Applications', '✏️')
+	.setCategorySettings('NSFW', '👀')
     client.user.setPresence({
         activity: {
             name: '!help',

@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const Guild = require('@schemas/guilds');
-const User = require('@schemas/User');
+const User = require('@schemas/user');
 const Nickname = require('@schemas/nicknames');
 
 const Usernames = require('@schemas/usernames');
