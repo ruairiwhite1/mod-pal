@@ -24,7 +24,7 @@ module.exports = {
                       _id: mongoose.Types.ObjectId(),
                       guildId: message.guild.id,
                       guildName: message.guild.name,
-                      prefix: client.config.prefix,
+                      prefix: prefix,
                       language: "english"
                     })
     
@@ -44,17 +44,17 @@ module.exports = {
          let mentionedMember = message.mentions.members.last() || message.guild.members.cache.get(args[0]);
     
         const msRegex = RegExp(/(\d+(s|m|h|w))/)
-        let muteRole = await message.guild.roles.cache.get(Logging.moderation.mute_role);
+        let muteRole = await message.guild.roles.cache.get(Logging.mute_role);
     
          if (!mentionedMember) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`'☹️ | ${language.banUserValid}`)
-                .setColor(client.color.red))
+                .setColor('RED'))
         }
         else if (!msRegex.test(args[1])) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`'☹️ | ${language.muteTime}`)
-                .setColor(client.color.red))
+                .setColor('RED'))
         }
     
         if (!muteRole) {
@@ -72,12 +72,12 @@ module.exports = {
         if (mentionedMember.roles.highest.position >= message.guild.me.roles.highest.position) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`'☹️ | ${language.muteRolePosition}`)
-                .setColor(client.color.red))
+                .setColor('RED'))
         }
         else if (muteRole.position >= message.guild.me.roles.highest.position) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`'☹️ | ${language.muteRolePositionBot}`)
-                .setColor(client.color.red))
+                .setColor('RED'))
         }
     
         const isMuted = await muteModel.findOne({
@@ -88,7 +88,7 @@ module.exports = {
         if (isMuted) {
             return message.channel.send(new Discord.MessageEmbed()
                 .setDescription(`'☹️ | ${language.muteMuted}`)
-                .setColor(client.color.red))
+                .setColor('RED'))
         }
     let reason = args.slice(1).join(' ');
     if (!reason) reason = `${language.noReasonProvided}`;
@@ -180,7 +180,7 @@ module.exports = {
     .addField('Length',  msRegex.exec(args[1])[1], true)
     .setFooter(`ID: ${mentionedMember.id}`)
     .setTimestamp()
-    .setColor(color)
+    .setColor('GREEN')
     
     channel.send(logEmbed).catch(()=>{})
     

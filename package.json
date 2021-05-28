@@ -24,6 +24,7 @@
     "canvas-constructor": "^4.1.0",
     "chalk": "^4.1.1",
     "common-tags": "^1.8.0",
+    "datadog-metrics": "^0.9.3",
     "date-fns": "^2.16.1",
     "discord-buttons": "^2.0.0",
     "discord-giveaways": "^4.5.1",

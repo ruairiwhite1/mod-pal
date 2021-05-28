@@ -4,27 +4,12 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const WOKCommands = require('wokcommands')
 
-
 //const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
-const { GiveawaysManager } = require('discord-giveaways');
 
-const manager = new GiveawaysManager(client, {
-    storage: './util/giveaways.json',
-    updateCountdownEvery: 10000,
-    hasGuildMembersIntent: false,
-    default: {
-        botsCanWin: false,
-        exemptPermissions: ['MANAGE_MESSAGES', 'ADMINISTRATOR'],
-        embedColor: '#FF0000',
-        embedColorEnd: '#000000',
-        reaction: '🎉'
-    }
-});
 client.distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
-client.giveawaysManager = manager;
 
 client.on('ready', async () => { 
     console.log('Mod Pal online!')

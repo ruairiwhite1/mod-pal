@@ -8,7 +8,7 @@ module.exports = {
     
     let embed = new discord.MessageEmbed()
     .setTitle(`IMAGINATION BOT SUPPORT DISCORD`)
-    .setDescription(`[CLICK HERE](https://discord.gg/3bDXewcgec)`)
+    .setDescription(`[CLICK HERE](https://discord.gg/98uHxr66tq)`)
     .setColor("RANDOM")
     .setFooter(`Developed by Ruairiw8`)
     .setTimestamp(message.timestamp = Date.now())
