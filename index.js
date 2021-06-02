@@ -8,6 +8,7 @@ const WOKCommands = require('wokcommands')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
+const SpotifyPlugin = require("@distube/spotify")
 
 client.distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin({ parallel: true })]})
 
