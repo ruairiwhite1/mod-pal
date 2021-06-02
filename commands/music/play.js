@@ -9,12 +9,13 @@ module.exports = {
     callback: async ({ message, args, text, client, prefix, instance }) => {
         const embed = new Discord.MessageEmbed
         .setTitle("🎵 Music Player")
-        .setDescription("▶️ Title **$**")
+        .setDescription(`▶️ Title **${song.name}**`)
         const distube = new DisTube(client, {
             searchSongs: 10,
             emitNewSongOnly: true,
             plugins: [new SpotifyPlugin({ parallel: true })]
         })
         client.distube.play(message, args.join(' '))
+        message.channel.send(embed)
     }
 }
