@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const DisTube = require('distube')
+const SpotifyPlugin = require("@distube/spotify")
 
 module.exports = {
     commands: ['play', 'p'],
