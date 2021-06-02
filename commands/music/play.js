@@ -7,9 +7,6 @@ module.exports = {
     category: 'Music',
     description: 'Play music in your own voice channel',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-        const embed = new Discord.MessageEmbed
-        .setTitle("🎵 Music Player")
-        .setDescription(`▶️ Title **${song.name}**`)
         const distube = new DisTube(client, {
             searchSongs: 10,
             emitNewSongOnly: true,
