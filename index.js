@@ -10,7 +10,7 @@ const mongo = require('@util/mongo')
 const DisTube = require('distube')
 const SpotifyPlugin = require("@distube/spotify")
 
-client.distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin({ parallel: true })]})
+client.distube = new DisTube(client, {searchSongs: 10, emitNewSongOnly: true, plugins: [new SpotifyPlugin({ parallel: true })]})
 
 client.on('ready', async () => { 
     console.log('Imagination Bot online!')
