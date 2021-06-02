@@ -2,7 +2,11 @@ const Discord = require('discord.js')
 const DisTube = require('distube')
 
 module.exports = client => {
-    const distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
+    const distube = new DisTube(client, {
+        searchSongs: 10,
+        emitNewSongOnly: true,
+        plugins: [new SpotifyPlugin({ parallel: true })]
+    })
 
 const status = (queue) => `Volume: \`${queue.volume}%\` | Loop: \`${queue.repeatMode ? queue.repeatMode == 2 ? "Server Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 client.distube.on("addSong", (message, queue, song) => message.channel.send(

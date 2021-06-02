@@ -9,7 +9,11 @@ module.exports = {
         const embed = new Discord.MessageEmbed
         .setTitle("🎵 Music Player")
         .setDescription("▶️ Title **$**")
-        const distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
+        const distube = new DisTube(client, {
+            searchSongs: 10,
+            emitNewSongOnly: true,
+            plugins: [new SpotifyPlugin({ parallel: true })]
+        })
         client.distube.play(message, args.join(' '))
     }
 }
