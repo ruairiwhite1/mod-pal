@@ -4,15 +4,15 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const WOKCommands = require('wokcommands')
 
-//const token = require('@root/token.json')
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
 
-client.distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true})
+client.distube = new DisTube(client, {searchSongs: false, emitNewSongOnly: true, plugins: [new SpotifyPlugin({ parallel: true })]})
 
 client.on('ready', async () => { 
-    console.log('Mod Pal online!')
+    console.log('Imagination Bot online!')
 	
 	new WOKCommands(client, {
 		commandsDir: 'commands',
@@ -40,9 +40,10 @@ client.on('ready', async () => {
 	.setCategorySettings('Alt Detector', '🤖')
 	.setCategorySettings('Applications', '✏️')
 	.setCategorySettings('NSFW', '👀')
+	.setCategorySettings('Search', '🔎')
     client.user.setPresence({
         activity: {
-            name: '!help',
+            name: '!help | Playing in the development playground',
             type: 'PLAYING'
         }
     });
@@ -52,5 +53,5 @@ client.on('ready', async () => {
 
 require('@dashboard/server');
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)
