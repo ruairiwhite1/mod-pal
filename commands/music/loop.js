@@ -1,16 +1,11 @@
 const Discord = require('discord.js')
-const DisTube = require('distube')
-const SpotifyPlugin = require("@distube/spotify")
+
 module.exports = {
     commands: ['repeat', 'loop'],
     category: 'Music',
     description: 'Loop the current queue or song',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-        const distube = new DisTube(client, {
-            searchSongs: 10,
-            emitNewSongOnly: true,
-            plugins: [new SpotifyPlugin({ parallel: true })]
-        })
+
         
         let mode = client.distube.setRepeatMode(message, parseInt(args[0]));
         mode = mode ? mode == 2 ? "Repeat queue" : "Repeat song" : "Off";

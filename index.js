@@ -1,18 +1,21 @@
 require('module-alias/register')
 
 const Discord = require('discord.js')
-const client = new Discord.Client()
+const client = new Discord.Client({
+	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+})
 const WOKCommands = require('wokcommands')
 
-//const token = require('@root/token.json')
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
 const SpotifyPlugin = require("@distube/spotify")
 
 client.distube = new DisTube(client, {
-    searchSongs: 10,
+    searchSongs: 0,
     emitNewSongOnly: true,
+	youtubeCookie: 'CONSENT=YES+GB.en-GB+V9; VISITOR_INFO1_LIVE=JrL9_CuvMKg; LOGIN_INFO=AFmmF2swRQIhAJQ-vCR3Bb6NADcc0-Eys4_YiJ-baq59-Ux60ZGqtWhTAiBbFg6uZ-9ScUaLT6jXRyQWsYeCVQon5f7fyaG2t3RArQ:QUQ3MjNmeThRcWstbGJPWmJ2S1VrT29hd0lqYk5neFo4aHZwandKRk80SGRYVXZnTTh1TVhXNHV0WXlKdG1YeW5PTnM2QVFIVFVHQ1d6SlRGRFEtQ1ZDQ1lzSk9QUERZMEdncnk3SFlsM0UwVDVZOEZnYXhKTkFFR3pRRnBIWmJlcWtpUEo2eUNaYWg1c3E2TWFURXlGUzBJQXR6YldCandFV256UGVDajIzaldSNGtXNjJjakVSbGVvdFJfYktmU0ZVTld1RDdfUGtPLUZVS05XSklrUDB2NXpzam1jdXB0TW9wcUw1d2RjaG9TT0pCTFR0OWpXaV9XVEM5cjhONG8zZS15WVFqSG9Saw==; HSID=AU0X8U7E8xzBlW9Tp; SSID=ABVdDGugiRq3P8JeY; APISID=xYQGvdrwLpYv7O10/AtXvRq4V-7X_DO-ob; SAPISID=zFbJ7gn3NbdZaV8X/A3ltMW6ARC-AMVDy_; __Secure-3PAPISID=zFbJ7gn3NbdZaV8X/A3ltMW6ARC-AMVDy_; PREF=tz=Europe.London&al=en&f4=4000000&f5=30; SID=-QcT9tZEd1uTrdjCoCgD5SHFO4ROZIm2uDoI0X6tuAMnqfNVLcMDe4vsicP7nOl2bK8ETA.; __Secure-3PSID=-QcT9tZEd1uTrdjCoCgD5SHFO4ROZIm2uDoI0X6tuAMnqfNVmGTZaDWFemdcb9hVgOAFbA.; YSC=-mgn7ZZinyg; SIDCC=AJi4QfHnmu1oN4ywbDSeG8Dv2JGIp8l__kRi31GFaLX1eKQ2QP8pgIoXkFgQH5YcGs01Cm1AVR8; __Secure-3PSIDCC=AJi4QfHzai0pyECPAlASA7J58V1vbnSw748Xx9gjtDiu-WOIi7hoiT37xP_DQ4zB67G8mKdC1Ys',
     plugins: [new SpotifyPlugin({ parallel: true })]
 })
 
@@ -58,5 +61,5 @@ client.on('ready', async () => {
 
 require('@dashboard/server');
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)

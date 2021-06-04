@@ -1,18 +1,20 @@
 const Discord = require('discord.js')
-const DisTube = require('distube')
-const SpotifyPlugin = require("@distube/spotify")
 module.exports = {
     commands: ['stop', 's', 'leave'],
     category: 'Music',
     description: 'Stop the music playing in',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-        const distube = new DisTube(client, {
-            searchSongs: 10,
-            emitNewSongOnly: true,
-            plugins: [new SpotifyPlugin({ parallel: true })]
-        })
-        
-        client.distube.stop(message)
-        message.channel.send('The music has been stopped')
-    }
+
+        embedbuilder(client, message, "RED", "STOPPED!", `Left the channel`)
+        return client.distube.stop(message);
 }
+    }
+
+    function embedbuilder(client, message, color, title, description){
+        let embed = new Discord.MessageEmbed()
+        .setColor(color)
+        .setFooter(client.user.username, client.user.displayAvatarURL());
+        if(title) embed.setTitle(title);
+        if(description) embed.setDescription(description);
+        return message.channel.send(embed);
+    }
