@@ -1,11 +1,11 @@
 require('module-alias/register')
 
-const Discord = require('discord.js')
-const client = new Discord.Client({
-	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+const { Discord, Client, Intents } = require('discord.js')
+const client = new Client({
+	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 })
 const WOKCommands = require('wokcommands')
-
+const disbut = require('discord-buttons')(client);
 //const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')

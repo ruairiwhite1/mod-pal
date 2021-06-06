@@ -20,7 +20,7 @@ module.exports = (client) => {
    .setColor(`RED`)
     .setTitle('Leave Server')
     .setThumbnail(`https://cdn.discordapp.com/attachments/647398611725975553/847896043235835944/image0.png`)
-    .setDescription(`Pogy left a Server!`)
+    .setDescription(`Imagination Bot left a Server!`)
     .addField(`Server Name`, `\`${guild.name}\``, true)
     .addField(`Server ID`, `\`${guild.id}\``, true)
     .setFooter(`${client.guilds.cache.size} guilds `,  'https://cdn.discordapp.com/attachments/647398611725975553/847896043235835944/image0.png');

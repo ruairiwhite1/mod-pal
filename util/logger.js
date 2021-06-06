@@ -32,7 +32,7 @@ const logger = createLogger({
   ),
   transports: [
     new transports.Console(),
-    new transports.File({ filename: './assets/logs/Pogy.log' }),
+    new transports.File({ filename: './assets/logs/Imagination-Bot.log' }),
   ],
 });
 
