@@ -4,6 +4,7 @@ module.exports = {
   name: "support",
   category: "Help",
   description: "Get an invite to our support discord!",
+  testOnly: true,
   run: async ({ message, args, text, client, prefix, instance }) => {
     
     let embed = new discord.MessageEmbed()
