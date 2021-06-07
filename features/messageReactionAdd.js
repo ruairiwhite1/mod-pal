@@ -17,7 +17,6 @@ const botCooldown = new Set();
 
  module.exports = async (client) => {
     client.on('messageReactionAdd', async (messageReaction, user) => {
-		console.log('Yo nice ticket bro')
 	
 //ignore bot's reactions
 if (client.user === user) return;
