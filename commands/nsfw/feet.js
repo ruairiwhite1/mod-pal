@@ -5,7 +5,7 @@ module.exports = {
         description: 'Sends you a random feet fetish image. (not always nsfw)',
         category: 'NSFW',
         nsfwOnly: true,
-        callback: ({ message, args, text, client, prefix, instance }) => {
+        callback: async ({ message, args, text, client, prefix, instance }) => {
             if(!message.channel.nsfw)
             {message.channel.send("This command can only be used in NSFW channels");
         return}

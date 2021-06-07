@@ -5,11 +5,12 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 })
 const WOKCommands = require('wokcommands')
-const disbut = require('discord-buttons')(client);
+
 //const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
+const disbut = require('discord-buttons')(client);
 const SpotifyPlugin = require("@distube/spotify")
 
 client.distube = new DisTube(client, {

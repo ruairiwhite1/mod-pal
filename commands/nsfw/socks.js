@@ -4,7 +4,7 @@ module.exports = {
         name: 'socks',
         description: '🧦 Pics',
         category: 'NSFW',
-        callback: ({ message, args, text, client, prefix, instance }) => {
+        callback: async ({ message, args, text, client, prefix, instance }) => {
             if(!message.channel.nsfw)
             {message.channel.send("This command can only be used in NSFW channels");
         return}
