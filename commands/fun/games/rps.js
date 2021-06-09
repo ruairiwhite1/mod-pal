@@ -1,44 +1,47 @@
-const economy = require('@features/economy')
-const Discord = require('discord.js');
-
+const discord = require('discord.js')
 module.exports = {
-    commands: ['rock-paper-scissors', 'rps'],
-    category: 'Games',
-    description: 'Play rock paper scissors against the bot',
+    name: 'rps',
+    aliases: [],
+    cooldown: '2s',
+    description: 'play a game of rock, paper and scissors',
     callback: async ({ message, args, text, client, prefix, instance }) => {
+        let embed = new discord.MessageEmbed()
+        .setTitle("Rock, Paper, Scissors!")
+        .setColor("RANDOM")
+        .setDescription("React to play! Wait for the reactions to load.")
+        .setTimestamp()
+        let msg = await message.channel.send(embed)
+        await msg.react("🗻")
+        await msg.react("✂")
+        await msg.react("📄")
 
-        const userId = message.author.id 
-        const guildId = message.guild.id 
-
-        const acceptedReplies = ['rock', 'paper', 'scissors'];
-        const random = Math.floor((Math.random() * acceptedReplies.length));
-        const result = acceptedReplies[random];
-
-        const choice = args[0];
-        if (!choice) return message.channel.send(`How to play: \`${prefix}rps rock|paper|scissors (bet)`)
-        if (!acceptedReplies.includes(choice)) return message.channel.send(`Only these responses are accepted: \`${acceptedReplies.join(', ')}\``)
-
-        console.log('Bot result:', result);
-        if (result === choice) return message.channel.send("It's a tie! We had the same choice")
-
-        switch (choice) {
-            case 'rock': {
-                if (result === 'paper') return message.channel.send('Awww better luck next time, I won!')
-                else return message.channel.send('Good job you won!')
-            }
-
-            case 'paper': {
-                if (result === 'scissors') return message.channel.send('Awww better luck next time, I won!')
-                else return message.channel.send('Good job you won!')
-            }
-
-            case 'scissors': {
-                if (result === 'rock') return message.channel.send('Awww better luck next time, I won!');
-                else return message.channel.send('Good job you won!')
-            }
-            default: {
-                return message.channel.send(`Only these responses are accepted: \`${acceptedReplies.join(', ')}\``)
-            }
+        const filter = (reaction, user) => {
+            return ['🗻', '✂', '📄'].includes(reaction.emoji.name) && user.id === message.author.id;
         }
-    }
+
+        const choices = ['🗻', '✂', '📄']
+        const me = choices[Math.floor(Math.random() * choices.length)]
+        msg.awaitReactions(filter, {max:1, time: 60000, error: ["time"]}).then(
+            async(collected) => {
+                const reaction = collected.first()
+                let result = new discord.MessageEmbed()
+                .setTitle("RESULT")
+                .setColor("RANDOM")
+                .addField("Your choice", `${reaction.emoji.name}`)
+                .addField("My choice", `${me}`)
+            await msg.edit(result)
+                if ((me === "🗻" && reaction.emoji.name === "✂") ||
+                (me === "📄" && reaction.emoji.name === "🗻") ||
+                (me === "✂" && reaction.emoji.name === "📄")) {
+                    message.reply("You lost!");
+            } else if (me === reaction.emoji.name) {
+                return message.reply("It's a tie!");
+            } else {
+                return message.reply("You won!");
+            }
+        })
+        .catch(collected => {
+                message.reply('Process has been cancelled since you did not respond in time!');
+            })
+}
 }

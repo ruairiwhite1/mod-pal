@@ -5,8 +5,11 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
 })
 const WOKCommands = require('wokcommands')
+const RPC = require('discord-rpc'); // npm i discord-rpc
+const rpc = new RPC.Client({transport: 'ipc'});
 
-//const token = require('@root/token.json')
+
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
@@ -50,17 +53,29 @@ client.on('ready', async () => {
 	.setCategorySettings('Applications', '✏️')
 	.setCategorySettings('NSFW', '👀')
 	.setCategorySettings('Search', '🔎')
-    client.user.setPresence({
-        activity: {
-            name: '!help | Playing in the development playground',
-            type: 'PLAYING'
-        }
+
     });
-        },
-)
+
+
+rpc.on('ready', () => {
+    rpc.setActivity({
+        details: '🖌 Imagination works best when its set free!', // Large text which is under the client name
+        state: 'Watching your server', // Small text under the large text
+        startTimestamp: new Date(), // starts new time stamp | you can add hourse to start from!
+        largeImageKey: 'LARGE-KEY', // Images keys can get from https://discord.com/developers/applications > Your client > Rich Presence > Art Assets > upload ur image and the name is: 'LARGE-KEY'!
+        largeImageText: 'Imagination!', // text shows when you aim on the large image
+        buttons: [{label : 'button1', url : 'https://discord.com/oauth2/authorize?client_id=787067669161574430&scope=bot&permissions=8'}]
+    });
+
+    console.log('RPC online');
+});
+
+rpc.login({
+    clientId: '787067669161574430' // create client from https://discord.com/developers/applications then go to General Information and copy the APPLICATION ID! NOTE: Don't add bot to the application! 
+});
 
 
 require('@dashboard/server');
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)
