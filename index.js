@@ -7,14 +7,16 @@ const client = new Client({
 const WOKCommands = require('wokcommands')
 const RPC = require('discord-rpc'); // npm i discord-rpc
 const rpc = new RPC.Client({transport: 'ipc'});
+client.uno = new Map();
 
-
-//const token = require('@root/token.json')
+const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
 const disbut = require('discord-buttons')(client);
 const SpotifyPlugin = require("@distube/spotify")
+const smartestchatbot = require('smartestchatbot');
+const scb = new smartestchatbot.Client();
 
 client.distube = new DisTube(client, {
     searchSongs: 0,
@@ -57,25 +59,37 @@ client.on('ready', async () => {
     });
 
 
-rpc.on('ready', () => {
-    rpc.setActivity({
-        details: '🖌 Imagination works best when its set free!', // Large text which is under the client name
-        state: 'Watching your server', // Small text under the large text
-        startTimestamp: new Date(), // starts new time stamp | you can add hourse to start from!
-        largeImageKey: 'LARGE-KEY', // Images keys can get from https://discord.com/developers/applications > Your client > Rich Presence > Art Assets > upload ur image and the name is: 'LARGE-KEY'!
-        largeImageText: 'Imagination!', // text shows when you aim on the large image
-        buttons: [{label : 'button1', url : 'https://discord.com/oauth2/authorize?client_id=787067669161574430&scope=bot&permissions=8'}]
-    });
-
-    console.log('RPC online');
-});
-
-rpc.login({
-    clientId: '787067669161574430' // create client from https://discord.com/developers/applications then go to General Information and copy the APPLICATION ID! NOTE: Don't add bot to the application! 
-});
-
-
 require('@dashboard/server');
 
-//client.login(token.token)
-client.login(process.env.DJS_TOKEN)
+//Chatbot//
+
+client.on('message', async message => {
+	try {
+		let channel = getChannelId(guild.id)
+		if (!channel) return;
+		var sChannel = message.guild.channels.cache.get(channel);
+		if (message.author.bot || sChannel.id !== message.channel.id) return;
+		message.content = message.content
+			.replace(/@(everyone)/gi, 'everyone')
+			.replace(/@(here)/gi, 'here');
+		sChannel.startTyping();
+
+		if (!message.content) return message.channel.send('Please say something.');
+
+		scb
+			.chat({
+				message: message.content,
+				name: client.user.username,
+				owner: 'Ruairiw8',
+				birthplace: 'Imagination Pavilion',
+				user: message.author.id,
+				language: 'en'
+			})
+		sChannel.stopTyping();
+	} catch (e) {
+		return;
+	}
+});
+
+client.login(token.token)
+//client.login(process.env.DJS_TOKEN)

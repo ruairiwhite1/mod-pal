@@ -7,6 +7,8 @@ const Guild = require('@schemas/guilds');
 const User = require('@schemas/user');
 const metrics = require('datadog-metrics');
 require("moment-duration-format");
+const Db = require("@models/schema.js");
+const reactionTicket = require("@schemas/tickets.js");
 const Logging = require('@schemas/logging');
 const Snipe = require('@schemas/snipe');
 module.exports = async (client) => {
@@ -61,5 +63,106 @@ if(!snipe){
  }
  if (message.webhookID || (!message.content && message.embeds.length === 0)) return;
 
+ let reactionDatabase = await Db.findOne({
+
+  guildid: message.guild.id,
+  msgid: message.id,
+  
+})
+
+let ticketDatabase = await reactionTicket.findOne({
+guildID: message.guild.id,
+messageID: message.id
+})
+
+
+
+if(reactionDatabase){
+
+const conditional = {
+  guildid: message.guild.id,
+  msgid: message.id,
+}
+const results = await Db.find(conditional)
+
+if (results && results.length) {
+for (const result of results) {
+  const { guildid } = result
+
+  try {
+      await Db.deleteOne(conditional)
+  } catch (e) {
+      console.log(e)
+  }
+
+}
+
+}
+
+}
+
+if(ticketDatabase){
+
+await ticketDatabase.deleteOne().catch(()=>{})
+
+}
+
+if(logging){
+if(logging.message_events.toggle == "true"){
+
+if(logging.message_events.ignore == "true"){
+if(message.author.bot) return;
+}
+
+const channelEmbed = await message.guild.channels.cache.get(logging.message_events.channel)
+
+if(channelEmbed){
+
+let color = logging.message_events.color;
+if(color == "#000000") color = message.client.color.red;
+
+
+if(logging.message_events.deleted == "true"){
+
+
+const embed = new MessageEmbed()
+.setAuthor(`${message.author.tag} | Message Deleted`, message.author.displayAvatarURL({ dynamic: true }))
+.setTimestamp()
+.setFooter(`ID: ${message.id}`)
+.setColor(message.guild.me.displayHexColor);
+
+
+if (message.content) {
+
+
+
+if (message.content.length > 1024) message.content = message.content.slice(0, 1021) + '...';
+
+embed
+.setDescription(`${message.member}'s message got deleted in ${message.channel}`)
+  .addField('Message', message.content);
+  
+
+
+
+} else { 
+
+embed
+  .setDescription(`${message.member} deleted an **embed** in ${message.channel}`);
+
+
+}
+
+if(channelEmbed &&
+channelEmbed.viewable &&
+channelEmbed.permissionsFor(message.guild.me).has(['SEND_MESSAGES', 'EMBED_LINKS'])){
+      channelEmbed.send(embed).catch(()=>{})
+}
+}
+
+
+}
+}
+}
   }
     )}
