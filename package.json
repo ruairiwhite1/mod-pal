@@ -87,7 +87,7 @@
     "yaml": "^1.10.0",
     "youtube-dl-exec": "^1.2.3",
     "youtube-sr": "^4.1.1",
-    "ytdl-core": "^4.8.2"
+    "ytdl-core": "^4.8.3"
   },
   "devDependencies": {},
   "_moduleAliases": {

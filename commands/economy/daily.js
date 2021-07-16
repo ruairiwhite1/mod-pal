@@ -8,7 +8,7 @@ module.exports = {
     cooldown: '24h',
     description: 'Earn a daily amount of coins!',
     callback: async ({ message, args, text, client, prefix, instance }) => {
-       const coins = Math.floor(Math.random() * 1000) + 1;
+       const coins = Math.floor(Math.random() * 10000) + 1;
 
         const userId = message.author.id 
         const guildId = message.guild.id 
