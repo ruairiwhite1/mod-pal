@@ -8,7 +8,6 @@ module.exports = {
       try {
         var subreddits = [
           'Fingering',
-          'FingeringFever',
           'FingeringHerself'
         ]
 
