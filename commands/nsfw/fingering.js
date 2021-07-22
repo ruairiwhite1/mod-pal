@@ -9,7 +9,6 @@ module.exports = {
         var subreddits = [
           'Fingering',
           'FingeringFever',
-          'fingering_babes',
           'FingeringHerself'
         ]
 
