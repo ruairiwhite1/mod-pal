@@ -1,25 +1,23 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-        name: 'bikini',
-        aliases: [ 'bikinis' ],
-        description: 'Photos of girls in bikinis! 👙',
+        name: 'face',
+        description: 'Just a normal face',
         category: 'NSFW',
         callback: async ({ message, args, text, client, prefix, instance }) => {
       try {
         var subreddits = [
-          'bikinis',
-          'bikinibodies'
+          'braceface',
         ]
-      
+
         var reddit = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
       
         const data = await fetch(`https://meme-api.herokuapp.com/gimme/${reddit}`).then(res => res.json())
-  
+
         if (!data) return message.channel.send(`Sorry, seems like i can't connect to API.`);
       
         const { title, postLink, url, subreddit } = data
-  
+
         message.channel.send({
           embed: {
             color: "BLURPLE",

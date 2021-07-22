@@ -5,9 +5,6 @@ module.exports = {
         description: 'Sends you 😺Images',
         category: 'NSFW',
         callback: async ({ message, args, text, client, prefix, instance }) => {
-            if(!message.channel.nsfw)
-            {message.channel.send("This command can only be used in NSFW channels");
-        return}
       try {
         var subreddits = [
           'pussy',
