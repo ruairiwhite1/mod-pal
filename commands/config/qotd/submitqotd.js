@@ -2,6 +2,7 @@ const Discord = require('discord.js')
 const discord = require('discord.js')
 const questions = require('@schemas/questions')
 const mongo = require('@util/mongo')
+const squareRegex = RegExp(/\[[^[]+\]/g);
 
 module.exports ={
     commands: 'qotd',
@@ -11,9 +12,10 @@ module.exports ={
     callback: async ({ message, args, text, client, prefix, instance }) => {
         if (message.channel.type == "dm") {
 
-            args.shift()
         const userId = message.author.id
-        const submittedQuestion = args.slice(0).join(" ")
+
+        const submittedQuestion = args.join(' ');
+
             if(!submittedQuestion) return message.channel.send(new discord.MessageEmbed().setColor('GREEN').setDescription(`☹️ | No question specified`));
         if(submittedQuestion.length < 5) return message.channel.send(new discord.MessageEmbed().setColor('GREEN').setDescription(`☹️ | Submitted question is too short`));
         if(submittedQuestion.length > 60) return message.channel.send(new discord.MessageEmbed().setColor('GREEN').setDescription(`☹️ | Submitted question too long`));

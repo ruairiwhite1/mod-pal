@@ -19,10 +19,10 @@ module.exports = {
 
     await qotdChannelSchema.findOneAndUpdate(
       {
-        _id: guild.id,
+        GuildId: guild.id,
       },
       {
-        _id: guild.id,
+        GuildId: guild.id,
         channelId: channel.id,
       },
       {
@@ -36,6 +36,6 @@ module.exports = {
   },
 }
 
-module.exports.getChannelId = (guildId) => {
+module.exports.getQotdChannelId = (guildId) => {
   return cache.get(guildId)
 }

@@ -7,7 +7,7 @@ const reqString = {
 
 const qotdChannelSchema = new mongoose.Schema({
   // Guild ID
-  _id: reqString,
+  GuildId: reqString,
   channelId: reqString,
 })
 
