@@ -9,7 +9,7 @@ const RPC = require('discord-rpc'); // npm i discord-rpc
 const rpc = new RPC.Client({transport: 'ipc'});
 client.uno = new Map();
 
-const token = require('@root/token.json')
+//const token = require('@root/token.json')
 const config = require('@root/config.json')
 const mongo = require('@util/mongo')
 const DisTube = require('distube')
@@ -89,5 +89,5 @@ client.on('message', async message => {
 	}
 });
 
-client.login(token.token)
-//client.login(process.env.DJS_TOKEN)
+//client.login(token.token)
+client.login(process.env.DJS_TOKEN)
