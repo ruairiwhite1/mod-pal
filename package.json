@@ -21,7 +21,6 @@
     "@discord-player/downloader": "^2.0.0",
     "@discord-player/extractor": "^3.0.0",
     "@discordjs/opus": "^0.5.0",
-    "@discordjs/voice": "github:discordjs/voice",
     "@distube/spotify": "^0.3.1",
     "axios": "^0.21.1",
     "canvacord": "^5.2.0",
