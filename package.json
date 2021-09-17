@@ -69,6 +69,7 @@
     "path": "^0.12.7",
     "random": "^3.0.6",
     "random-email": "^1.0.3",
+    "random-puppy": "^1.1.0",
     "relevant-urban": "^2.0.0",
     "request-promise-native": "^1.0.9",
     "rgx": "^0.2.4",
