@@ -8,9 +8,8 @@ module.exports = {
       try {
         if(!message.channel.nsfw){ message.channel.send("This command can only be used in channels marked nsfw."); return; }
         var subreddits = [
-          'incestporn',
-          'wincest',
-          'incest_gifs'
+          'IncestPornFamily',
+          'IncestPornCreampies'
         ]
 
         var reddit = subreddits[Math.round(Math.random() * (subreddits.length - 1))];
