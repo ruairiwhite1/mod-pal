@@ -40,6 +40,7 @@ client.on('ready', async () => {
 		'712032546950742055',
 		'619654859364499471',
 		'383886457636651009',
+		'864625166007664660',
 	])
 	.setDisplayName('Imagination Bot')
 	.setColor('0xe71177')
