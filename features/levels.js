@@ -1,4 +1,4 @@
-const mongo = require('@util/mongo')
+/*const mongo = require('@util/mongo')
 const profileSchema = require('@schemas/profile-schema')
 const Levels = require('discord-xp')
 const config = require('@root/config.json')
@@ -22,4 +22,4 @@ client.on("message", async message => {
     }
 }
 )
-}
+}*/
